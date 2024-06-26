@@ -58,7 +58,8 @@ class Ui_MainWindow(object):
     
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-
+        self.submit.clicked.connect(self.pressed)
+        
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
@@ -72,7 +73,7 @@ class Ui_MainWindow(object):
     def pressed(self):
         x = int(self.comboX.currentText())
         y = int(self.comboY.currentText())
-        xor = (x and not y) or (not x and y)
+        xor = x ^ y 
 
         self.label.setText("X XOR Y = " + str(xor))
 
